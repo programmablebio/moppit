@@ -184,7 +184,7 @@ def main(args):
         binders = new_binders
         generation += 1
 
-    print(f"Generation: {generation}\tBinder: {binders[0].binder_seq}\tScore: {binders[0].score}\tPPL: {binders[0].ppl}")
+    print(f"moPPIt Stopping\tBinder: {binders[0].binder_seq}\tScore: {binders[0].score}\tPPL: {binders[0].ppl}")
 
 
 
