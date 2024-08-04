@@ -133,7 +133,7 @@ def main(args):
             print(f"{binders[m].binder_seq}")
 
     no_improvement_generations = 0
-    max_tolerance = 20
+    max_tolerance = args.max_iterations
     previous_score = 10000
     previous_ppl = 10000
     threshold = int(0.1*len(parse_motif(args.motif.strip('[]'))))
@@ -205,5 +205,6 @@ if __name__ == '__main__':
     parser.add_argument("-n_head", type=int, default=6, help="Number of heads")
     parser.add_argument("-d_inner", type=int, default=64)
     parser.add_argument("--num_display", type=int, default=1)
+    parser.add_argument("-max_iterations", type=int, default=20, help="Maximum no improvement iterations")
     args = parser.parse_args()
     main(args)
