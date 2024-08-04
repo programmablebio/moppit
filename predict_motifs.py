@@ -142,7 +142,7 @@ def main():
                                             d_inner=64).to(device)
 
     prediction, _ = calculate_score(args.target, args.binder, model, args)
-    print(prediction)
+    # print(prediction)
 
     binding_site = []
     for i in range(len(prediction)):
@@ -160,7 +160,7 @@ def main():
         acc, f1, mcc = compute_metrics(gt, binding_site, L)
         print(f"Accuracy={acc}\tF1={f1}\tMCC={mcc}")
 
-    print("Prediction Logits: ", prediction[binding_site])
+    # print("Prediction Logits: ", prediction[binding_site])
 
 
 if __name__ == "__main__":
