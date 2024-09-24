@@ -1,4 +1,4 @@
-# moPPIt: De Novo Generation of Motif-Specific Peptide Binders with a Multimeric Protein Language Model
+# moPPIt: De novo generation of motif-specific binders with protein language models
 
 ![image/png](https://cdn-uploads.huggingface.co/production/uploads/649ef40be56dc456b7a36649/QuO8YvTMdCJtKgg5KIEUt.png)
 
