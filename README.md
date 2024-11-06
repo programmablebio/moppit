@@ -13,7 +13,7 @@ Motif-specific targeting of protein-protein interactions (PPIs) is crucial for d
 
 ---
 
-## 0. Conda Environment Preparation
+# 0. Conda Environment Preparation
 
 ```
 conda env create -f environment.yml
@@ -21,7 +21,7 @@ conda env create -f environment.yml
 conda activate moppit
 ```
 
-## 1. Dataset Preparation
+# 1. Dataset Preparation
 
 Pre-training dataset: `dataset/pretrain_dataset.csv`
 
@@ -41,7 +41,7 @@ python dataset/pretrain_preprocessing.py -dataset_pth dataset/finetune_dataset.c
 
 The processed datasets will be saved in `output_dir` 
 
-## 2. Model Training and Fine-tuning
+# 2. Model Training and Fine-tuning
 
 To train BindEvaluator with dilated CNN modules, run `scripts/train.sh`
 
@@ -51,13 +51,16 @@ To test the performance of BindEvaluator, run `scripts/test.sh`
 
 Ensure you adjust the hyper-parameters according to your specific requirements.
 
-## 3. Binding site prediction
+# 3. Binding site prediction
 
 Protein-protein interaction binding sites can be predicted using the pre-trained BindEvaluator (`model_path/pretrained_BindEvaluator.ckpt`)
 
 Peptide-protein interaction binding sites can be predicted using the fine-tuned BindEvaluator (`model_path/finetuned_BindEvaluator.ckpt`)
 
 We provide an example script to use BindEvaluator to predict binding sites (`scripts/predict.sh`)
+
+NOTE: amino acid indices start from 0 on a protein sequence
+
 ``` txt
 usage: python predict_motifs.py -sm MODEL_PATH -target Target -binder Binder
                         [-gt] [-n_layers] [-d_model] [-d_hidden] [-n_head] [-d_inner]
@@ -70,7 +73,7 @@ arguments:
   -n_layers, -d_model, -d_hidden, -n_head, -d_inner   Model parameters for BindEvaluator, which should be the same as the model specified in -sm used
 ```
 
-## 4. Motif-Specific Binder Generation
+# 4. Motif-Specific Binder Generation
 
 We provide an example script to use moPPIt for generating motif-specific binders based on a target sequence (`scripts/generation.sh`)
 ``` txt
@@ -81,7 +84,7 @@ arguments:
   -sm               The path to the BindEvaluator model weights
   --protein_seq     Target protein sequence
   --peptide_length  The length for the generated binders
-  --motif           The binding motifs
+  --motif           The binding motifs (NOTE: amino acid indices start from 0 on a protein sequence)
   --top_k           Sampling argument for each position used in PepMLM
   --num_binders     The size of the pool of candidates in the genetic algorithm
   --num_display     The number of top binders to display after each generation
@@ -90,12 +93,13 @@ arguments:
 ```
 
 
-## 5. PeptiDerive
+# 5. PeptiDerive
 
 We provide the Python script to run PeptiDerive locally. 
 
 `pyrosetta` needs to be installed in the conda environment before running this script. ([Installation Guideline](https://www.pyrosetta.org/downloads#h.c0px19b8kvuw))
 
+NOTE: In PeptiDerive results, amino acid indices start from 1 on protein sequences.
 ``` txt
 usage: python peptiderive.py --pdb PDB_PATH [--binder_chain]
 
