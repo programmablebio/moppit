@@ -1,7 +1,7 @@
 export CUDA_VISIBLE_DEVICES=2,3,4,5,6,7
 
 torchrun --nproc_per_node=6 test_bindevaluator.py \
--sm '/home/tc415/moPPIt/moppit/model_path/finetune_bindevaluator_0/model-epoch=30-val_mcc=0.60-val_loss=0.51.ckpt' \
+-sm './model_path/finetuned_BindEvaluator.ckpt' \ # Checkpoints are in the huggingface repo
 -n_layers 8 \
 -d_model 128 \
 -d_hidden 128 \
