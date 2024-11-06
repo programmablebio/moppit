@@ -1,7 +1,7 @@
 export CUDA_VISBILE_DEVICES=7
 
 python moppit.py \
--sm '/home/tc415/moPPIt/moppit/model_path/finetune_bindevaluator_0/model-epoch=29-val_mcc=0.60-val_loss=0.51.ckpt' \
+-sm './model_path/finetuned_BindEvaluator.ckpt' \ # Checkpoints are in the huggingface repo
 -n_layers 8 \
 -d_model 128 \
 -d_hidden 128 \
