@@ -7,6 +7,8 @@
 Motif-specific targeting of protein-protein interactions (PPIs) is crucial for developing highly selective therapeutics, yet remains a significant challenge in drug discovery. The ability to precisely target specific motifs or epitopes within these proteins is essential for modulating their function while minimizing off-target effects, but current methods struggle to achieve this specificity without structural information. In this work, we introduce a motif-specific PPI targeting algorithm, moPPIt, for de novo generation of motif-specific peptide binders using only protein sequence information. At the core of moPPIt is BindEvaluator, a transformer-based model that interpolates protein language model embeddings via a series of multi-headed self-attention blocks, with a key focus on local interaction changes. Trained on over 510,000 PPI-hotspot triplets from the PPIRef dataset, BindEvaluator accurately predicts binding hotspots between two proteins with a test AUC > 0.94, improving to AUC > 0.96 when fine-tuned on peptide-protein pairs. By combining BindEvaluator with our PepMLM peptide generator and genetic algorithm-based optimization, moPPIt generates peptides that bind specifically to user-defined motifs on target proteins.
 
 ---
+**Model Checkpoints can be found in the Huggingface repo**: [Link](https://huggingface.co/ChatterjeeLab/moPPIt)
+
 **Colab Notebook for Binding Site Prediction and Motif-Specific Binder Generation**: [Link](https://colab.research.google.com/drive/1SL3H_vI1y6qccce3vLOo0W2EpxIF4Xik?usp=sharing)
 
 **Colab Notebook for PeptiDerive**: [Link](https://colab.research.google.com/drive/1aCODZ-WRwhxr-u8nEB6ZrdrhIOTz7-UF?usp=sharing)
